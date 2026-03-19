@@ -80,11 +80,15 @@ If you find a bypass, post your method in the thread: https://www.unknowncheats.
 
 1. Create a new empty C++ project in Visual Studio 2022
 2. Add `AntiCheat.h`, `AntiCheat.cpp`, and `Game.cpp`
-3. Set the subsystem to Windows:
+3. Use Multi-Byte Charachter Set:
+   ```
+   Project Properties -> Configuration Properties -> Advanced -> Charachter Set -> Use Multi-Byte Character Set
+   ```
+4. Set the subsystem to Windows:
    ```
    Project Properties -> Linker -> System -> SubSystem -> Windows
    ```
-4. Build in Release x86 or x64
+5. Build in Release x86 or x64
 
 No additional libraries, resource files, or dependencies required. All libs are linked via `#pragma comment`.
 
