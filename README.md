@@ -224,9 +224,6 @@ Note: If you are reading past July 10, 2026 and using Windows 11, you may need t
 
 **Extra Challenge:** Make the debug console appear(it also might help in bypassing the AC)
 
-
-**PLEASE DON'T POST A SOLUTION UNTIL THE FILES ARE APPROVED ON UC!**
-
 ---
 ### Extra Challenge: TrySpoofHWID
 
