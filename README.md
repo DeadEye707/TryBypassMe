@@ -234,33 +234,27 @@ In your journey of bypassing anti-cheats you will eventually face this scenario.
 ![TrySpoofHWID screenshot](https://i.imgur.com/A2NJA4R.png)
 
 **Credits:** [@apexlegends](https://www.unknowncheats.me/forum/members/2681398.html) for [All methods of retrieving unique identifiers (HWIDs) on your PC](https://www.unknowncheats.me/forum/anti-cheat-bypass/333662-methods-retrieving-unique-identifiers-hwids-pc.html)
-
-## Build
-
-1. Create a new empty C++ project in Visual Studio 2022
-2. Add `AntiCheat.h`, `AntiCheat.cpp`, and `Game.cpp`
-3. Use Multi-Byte Character Set:
-   ```
-   Project Properties -> Configuration Properties -> Advanced -> Character Set -> Use Multi-Byte Character Set
-   ```
-4. Set the subsystem to Windows:
-   ```
-   Project Properties -> Linker -> System -> SubSystem -> Windows
-   ```
-5. Build in Release x86
-
-No additional libraries, resource files, or dependencies required. All libs are linked via `#pragma comment`.
-
 ---
 
-## Project Structure
+## Build
+**1. Use Multi-Byte Character Set:**
+> Project Properties -> Configuration Properties -> Advanced -> Character Set -> Use Multi-Byte Character Set
 
-```
-TryBypassMe/
-    AntiCheat.h       # Public AC interface and shared atomic counters
-    AntiCheat.cpp     # All detection logic, background thread, CRC32
-    Game.cpp          # Game loop, rendering, entity logic, entry point
-```
+**2. Set the subsystem to Windows (Except for WatchdogMain, which should be console):**
+> Project Properties -> Linker -> System -> SubSystem -> Windows
+
+### Specific for Level 3:
+
+1. Build in **x64 release**.
+2. After building the game and the external watchdog, run this command in cmd:
+> `WatchdogMain.exe --dump-hash Level3.exe`
+
+3. Then change this line in the code:
+> `EXPECTED_GAME_HASH = 0xXXXXXXXX // The hash value you got`
+
+4. And then rebuild `WatchdogMain`.
+### Usage
+You are completely free to use, modify, and learn from this source code for your own anti-cheat research or personal projects. All I ask is that you drop a link back to this main thread as credit if you use it!
 
 ---
 
