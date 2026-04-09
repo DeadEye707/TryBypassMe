@@ -195,6 +195,39 @@ A massive jump from Levels 1 & 2, extensively tested against most of the solutio
 
 ---
 
+## Kernel Edition
+
+**TBMKEv1: What's New?**
+
+- Everything from TBMUEv3
+- Kernel-mode driver (Ring 0) with IOCTL-based handshake and heartbeat
+- IOCTL liveness commit, proves the driver path is not intercepted by a stub or filter driver
+- Heartbeat HMAC secret lives in Ring 0 only, scanning game memory yields nothing to forge with
+- Kernel VAD scanner detects anonymous executable regions and kernel-mode memory reads
+- Kernel handle stripping, remote thread injection, and blocked image enforcement from Ring 0
+- Dedicated kernel threat monitor thread, independent of all other AC threads
+- 25 tamper guards dispatched across 4 threads, killing any one thread silences at most 6 guards
+- Cross-stale detection, any surviving guard set detects a silenced thread within its next run interval
+- Every tamper guard doubles as a driver and watchdog liveness probe on every call
+- Pre-baseline CRC snapshot taken at WinMain entry, closes the CREATE_SUSPENDED pre-patch attack
+- Binary hash sentinels stored as volatile arrays and patched post-build by a script, invisible to static scanners
+- Watchdog image path verification, detects watchdog process replacement even if the PID is still alive
+- Global kill latch, exactly one dialog fires regardless of how many threads hit a kill path simultaneously
+- Kernel quiet window prevents cascade false positives after a detection fires
+- Watchdog unloads the driver after game exit, cleanup guaranteed even if TerminateProcess is used
+- VEH emergency driver unload, driver is always stopped cleanly on any crash or kill path
+
+Thanks to @[LemiIliun](https://www.unknowncheats.me/forum/members/6827273.html) for the certificate.
+Note: If you are reading past July 10, 2026 and using Windows 11, you may need to enable Test Signing mode due to [New Driver Loading Policies](https://www.unknowncheats.me/forum/anti-cheat-bypass/745457-driver-loading-policies.html)
+
+**Your Goal:** Make yourself unkillable or give yourself infinite ammo or create aimbot or esp.
+
+**Extra Challenge:** Make the debug console appear(it also might help in bypassing the AC)
+
+
+**PLEASE DON'T POST A SOLUTION UNTIL THE FILES ARE APPROVED ON UC!**
+
+---
 ### Extra Challenge: TrySpoofHWID
 
 The same game, but when you launch it you are permanently banned for cheating.
@@ -204,14 +237,6 @@ In your journey of bypassing anti-cheats you will eventually face this scenario.
 ![TrySpoofHWID screenshot](https://i.imgur.com/A2NJA4R.png)
 
 **Credits:** [@apexlegends](https://www.unknowncheats.me/forum/members/2681398.html) for [All methods of retrieving unique identifiers (HWIDs) on your PC](https://www.unknowncheats.me/forum/anti-cheat-bypass/333662-methods-retrieving-unique-identifiers-hwids-pc.html)
-
----
-
-## Kernel Edition
-
-Coming Soon.
-
----
 
 ## Build
 
