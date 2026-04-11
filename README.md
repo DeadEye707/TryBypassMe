@@ -40,9 +40,12 @@ Random chance on every kill:
 | Minigun | ~2% | Full-auto, 10 seconds |
 | Rocket Launcher | ~2% | High damage, 10 seconds |
 
+![screenshot 1](https://i.imgur.com/qlxdFjU.png)
+![screenshot 2](https://i.imgur.com/5fTn85d.png)
+![screenshot 3](https://i.imgur.com/QwaVr8G.png)
 ---
-
-## Usermode Edition
+<details>
+<summary>Usermode Edition</summary>
 
 Everything here is **usermode ring 3**. A kernel driver bypasses all of it trivially. That is intentional. These levels are about solving it in usermode.
 
@@ -189,16 +192,13 @@ A massive jump from Levels 1 & 2, extensively tested against most of the solutio
 
 **Goal:** Make yourself unkillable or give yourself infinite ammo.
 
-![Level 3 screenshot 1](https://i.imgur.com/qlxdFjU.png)
-![Level 3 screenshot 2](https://i.imgur.com/5fTn85d.png)
-![Level 3 screenshot 3](https://i.imgur.com/QwaVr8G.png)
+</details>
 
----
+<details>
+<summary>Kernel Edition</summary>
 
-## Kernel Edition
-
+  
 **TBMKEv1: What's New?**
-
 - Everything from TBMUEv3
 - Kernel-mode driver (Ring 0) with IOCTL-based handshake and heartbeat
 - IOCTL liveness commit, proves the driver path is not intercepted by a stub or filter driver
@@ -224,8 +224,9 @@ Note: If you are reading past July 10, 2026 and using Windows 11, you may need t
 
 **Extra Challenge:** Make the debug console appear(it also might help in bypassing the AC)
 
----
-### Extra Challenge: TrySpoofHWID
+</details>
+<details>
+<summary>Extra Challenge: TrySpoofHWID</summary>
 
 The same game, but when you launch it you are permanently banned for cheating.
 
@@ -234,14 +235,19 @@ In your journey of bypassing anti-cheats you will eventually face this scenario.
 ![TrySpoofHWID screenshot](https://i.imgur.com/A2NJA4R.png)
 
 **Credits:** [@apexlegends](https://www.unknowncheats.me/forum/members/2681398.html) for [All methods of retrieving unique identifiers (HWIDs) on your PC](https://www.unknowncheats.me/forum/anti-cheat-bypass/333662-methods-retrieving-unique-identifiers-hwids-pc.html)
----
+</details>
 
-## Build
+<details>
+<summary>Build Instructions</summary>
+
+  
 **1. Use Multi-Byte Character Set:**
 > Project Properties -> Configuration Properties -> Advanced -> Character Set -> Use Multi-Byte Character Set
 
 **2. Set the subsystem to Windows (Except for WatchdogMain, which should be console):**
 > Project Properties -> Linker -> System -> SubSystem -> Windows
+
+3. Build in **x86 release**.
 
 ### Specific for Level 3:
 
@@ -253,6 +259,9 @@ In your journey of bypassing anti-cheats you will eventually face this scenario.
 > `EXPECTED_GAME_HASH = 0xXXXXXXXX // The hash value you got`
 
 4. And then rebuild `WatchdogMain`.
+</details>
+
+---
 ### Usage
 You are completely free to use, modify, and learn from this source code for your own anti-cheat research or personal projects. All I ask is that you drop a link back to this main thread as credit if you use it!
 
